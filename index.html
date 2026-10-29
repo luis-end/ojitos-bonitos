@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Fany Lu 🌻💖</title>
+    <!-- Importar Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importar Google Fonts para tipografía elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos personalizados y animaciones */
+        body {
+            /* Imagen de fondo de girasoles con una capa cálida */
+            background-image: linear-gradient(rgba(255, 230, 200, 0.4), rgba(255, 180, 150, 0.5)), url('https://images.unsplash.com/photo-1473347535492-f089608930c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Efecto Glassmorphism para la tarjeta */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Animación para el texto de entrada */
+        .fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 1s; }
+        .delay-3 { animation-delay: 1.5s; }
+        .delay-4 { animation-delay: 2s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contenedor de elementos flotantes (corazones y girasoles) */
+        #floating-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-item {
+            position: absolute;
+            bottom: -50px;
+            font-size: 1.5rem;
+            animation: floatUp linear forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+        
+        /* Animación de latido para el corazón principal */
+        .heartbeat {
+            display: inline-block;
+            animation: beat 1.2s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 relative">
+
+    <!-- Contenedor para animaciones de fondo -->
+    <div id="floating-container"></div>
+
+    <!-- Tarjeta Principal (Visible y por encima de las animaciones) -->
+    <main class="glass-card relative z-10 w-full max-w-2xl rounded-3xl p-8 md:p-12 text-center transform transition duration-500 hover:scale-[1.02]">
+        
+        <!-- Decoración superior -->
+        <div class="mb-6 fade-in-up">
+            <span class="text-4xl heartbeat">💖</span>
+            <span class="text-4xl mx-2">🌻</span>
+            <span class="text-4xl heartbeat">💖</span>
+        </div>
+
+        <!-- Título principal -->
+        <h1 class="font-cursive text-5xl md:text-6xl text-rose-700 font-bold mb-8 fade-in-up delay-1 drop-shadow-md">
+            Para ti, mi hermosa Fany Lu
+        </h1>
+
+        <!-- Contenido romántico -->
+        <div class="space-y-6 text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
+            
+            <p class="fade-in-up delay-2">
+                Desde que llegaste a mi vida, cada día tiene el color vibrante y la luz inmensa de un millón de girasoles bajo el sol de verano.
+            </p>
+            
+            <p class="fade-in-up delay-3">
+                Tu sonrisa tiene el poder de iluminar hasta mis momentos más oscuros. Tu ternura llena cada rincón de mi corazón con una alegría que nunca antes había conocido. Eres la casualidad más hermosa y el destino más dulce que me pudo pasar.
+            </p>
+
+            <p class="fade-in-up delay-4 italic text-rose-800 font-semibold text-2xl font-cursive pt-4">
+                "No hay paisaje más hermoso que verte sonreír, ni lugar más seguro que estar contigo."
+            </p>
+
+        </div>
+
+        <!-- Despedida -->
+        <div class="mt-12 fade-in-up delay-4">
+            <p class="font-cursive text-3xl text-rose-700 font-bold">
+                Te quiero Fany Lu          </p>
+            <div class="mt-4 border-t-2 border-rose-300 w-24 mx-auto pt-4">
+                <span class="text-3xl">🌻</span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Script para generar corazones y girasoles flotantes -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('floating-container');
+            const items = ['💖', '🌻', '✨', '💛', '💗'];
+
+            function createFloatingItem() {
+                const el = document.createElement('div');
+                
+                // Elegir un emoji aleatorio
+                const randomItem = items[Math.floor(Math.random() * items.length)];
+                el.innerText = randomItem;
+                el.classList.add('floating-item');
+
+                // Posición horizontal aleatoria
+                el.style.left = Math.random() * 100 + 'vw';
+                
+                // Duración de la animación aleatoria (entre 6s y 12s para un efecto suave)
+                const duration = Math.random() * 6 + 6;
+                el.style.animationDuration = duration + 's';
+
+                // Tamaño aleatorio
+                const size = Math.random() * 1 + 1; // 1rem a 2rem
+                el.style.fontSize = size + 'rem';
+
+                container.appendChild(el);
+
+                // Eliminar el elemento del DOM una vez termine su animación
+                setTimeout(() => {
+                    el.remove();
+                }, duration * 1000);
+            }
+
+            // Crear un nuevo elemento cada 400ms
+            setInterval(createFloatingItem, 400);
+        });
+    </script>
+</body>
+</html>
